@@ -30,12 +30,12 @@
 --     user_id     int references users (id)
 -- );
 --
--- insert into posts (description, name, user_id)
--- values ('Продам велосипед, новый, горный, 25 скоростей Schimano',
---         'Продам велосипед', 1);
--- insert into posts (description, name, user_id)
--- values ('Куплю или приму в дар мотоцикл, б/у, находу',
---         'Куплю мотоцикл', 2);
--- insert into posts (description, name, user_id)
--- values ('Требования Java, JS, HTML, PostgreSQL, Git, Linux',
---         'Вакансия на стажера', 3);
+insert into passport (created, department, number, seria)
+values ('2022-02-19 14:45:26.3433256',
+        'УВД по Московской Области', 111222, 'XIIFRA');
+insert into passport (created, department, number, seria)
+values ('2022-02-15 14:45:26.3433256',
+        'УВД по Московской Области', 111333, 'XIIFRA');
+insert into passport (created, department, number, seria)
+values ('2022-02-12 14:45:26.3433256',
+        'УВД по Московской Области', 555444, 'XIIFRA');

@@ -66,4 +66,29 @@ public class PassportController {
         this.passportService.delete(passport);
         return ResponseEntity.ok().build();
     }
+
+    /** unavaliabe, загрузить паспорта чей срок вышел
+     *
+     * @return List<Object> + Response status
+     */
+    @GetMapping("/unavaliabe")
+    public ResponseEntity<List<Passport>> findByDateExpiration() {
+        var person = this.passportService.unavaliabe();
+        return new ResponseEntity<>(person,
+                !person.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND
+        );
+    }
+
+    /**
+     * find-replaceable, загрузить паспорта, которые нужно заменить в ближайшие 3 месяца
+     *
+     * @return
+     */
+    @GetMapping("/find-replaceable")
+    public ResponseEntity<List<Passport>> findByDateExpirationByThreeMounth() {
+        var person = this.passportService.unavaliabe();
+        return new ResponseEntity<>(person,
+                !person.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND
+        );
+    }
 }

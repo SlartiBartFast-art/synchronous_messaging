@@ -1,23 +1,26 @@
 package ru.job4j.synchmessaging.service;
 
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ru.job4j.synchmessaging.model.Passport;
+import ru.job4j.synchmessaging.repository.HbmRepositoryImpl;
 import ru.job4j.synchmessaging.repository.PassportRepository;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
+@Slf4j
 @Service
 public class PassportService {
+    static final Logger LOGGER = LoggerFactory.getLogger(PassportService.class);
 
     private PassportRepository repository;
+    private HbmRepositoryImpl hbmRepository;
 
-    public PassportService(PassportRepository repository) {
+    public PassportService(PassportRepository repository, HbmRepositoryImpl hbmRepository) {
         this.repository = repository;
+        this.hbmRepository = hbmRepository;
     }
 
     public Passport save(Passport passport) {
@@ -40,34 +43,30 @@ public class PassportService {
         repository.delete(passport);
     }
 
-    //TODO
-     //unavaliabe, загрузить паспорта чей срок вышел
+    /**
+     * unavaliabe, загрузить паспорта чей срок вышел
+     *
+     * @return
+     */
     public List<Passport> unavaliabe() {
-        List<Passport> passports = new ArrayList<>();
-      var rsl = StreamSupport.stream(
-                this.findAll().spliterator(), false
-        ).collect(Collectors.toList());
-        var dateToday = LocalDateTime.now();
-
-        Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
-        System.out.println(timestamp);
-        var st = timestamp.toString().split(" ");
-        System.out.println(st[0]);
-        Date d = new Date(System.currentTimeMillis());
-        System.out.println(d);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        var rt =  formatter.format(d);
-        System.out.println("->" + rt);
-        var gf = rt.split(" ");
-        System.out.println(gf[0]);
-
-        return passports;
+        var rsl = hbmRepository.findUn();
+        LOGGER.info("То что нашли {}", rsl);
+        return rsl;
     }
 
-    private void convert(Timestamp timestamp) {
-        var st = timestamp.toString().split(" ");
-        System.out.println(st[0]);
+    /**
+     * return Passport object to be replaced within the next 3 months
+     *
+     * @return List values Passport object
+     */
+    public List<Passport> findByDateMoreThenDay() {
+        var rsl = hbmRepository.replaceable();
+        LOGGER.info("То что нашли {}", rsl);
+        return rsl;
     }
 
- //find-replaceable, загрузить паспорта, которые нужно заменить в ближайшие 3 месяца
+//    private void convert(Timestamp timestamp) {
+//        var st = timestamp.toString().split(" ");
+//        System.out.println(st[0]);
+//    }
 }
