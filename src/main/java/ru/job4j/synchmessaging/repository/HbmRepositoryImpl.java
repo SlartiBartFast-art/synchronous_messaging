@@ -24,8 +24,8 @@ public class HbmRepositoryImpl {
     public List<Passport> findUn() {
         List<Passport> passports = new ArrayList<>();
         passports = entityManager
-                .createQuery("select c from Passport as c where c.created < :finish ", Passport.class)
-                .setParameter("finish", subtractDays(1))
+                .createQuery("select c from Passport as c where c.replace < :finish ", Passport.class)
+                .setParameter("finish", subtractDays(1, false))
                 .getResultList();
         return passports;
     }
@@ -38,8 +38,8 @@ public class HbmRepositoryImpl {
     public List<Passport> replaceable() {
         List<Passport> passports = new ArrayList<>();
         passports = entityManager
-                .createQuery("select c from Passport as c where c.created < :finish ", Passport.class)
-                .setParameter("finish", subtractDays(90))
+                .createQuery("select c from Passport as c where c.replace < :finish ", Passport.class)
+                .setParameter("finish", subtractDays(90, true))
                 .getResultList();
         return passports;
     }
@@ -48,16 +48,19 @@ public class HbmRepositoryImpl {
      * метод определение даты минус 1 день
      * или 90 дней, в зависимости от условия поиска
      * параметр метода - колличество дней минус от текущей даты
-     *
+     *boolean flag - false minus true plus
      * @return Date time one day before
      */
-    private Date subtractDays(int day) {
+    private Date subtractDays(int day, boolean flag) {
         Date date = new Date(System.currentTimeMillis());
         int days = day;
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(date);
-        cal.add(Calendar.DATE, -days);
+        if (!flag) {
+            cal.add(Calendar.DATE, -days);
+            return cal.getTime();
+        }
+        cal.add(Calendar.DATE, days);
         return cal.getTime();
     }
-
 }

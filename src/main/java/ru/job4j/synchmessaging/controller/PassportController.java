@@ -86,7 +86,7 @@ public class PassportController {
      */
     @GetMapping("/find-replaceable")
     public ResponseEntity<List<Passport>> findByDateExpirationByThreeMounth() {
-        var person = this.passportService.unavaliabe();
+        var person = this.passportService.findByDateMoreThenDay();
         return new ResponseEntity<>(person,
                 !person.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND
         );

@@ -26,6 +26,8 @@ public class Passport {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created")
     private Date created;
+    @Column(name = "replace")
+    private Date replace;
     @Column(name = "department")
     private String department;
 }
