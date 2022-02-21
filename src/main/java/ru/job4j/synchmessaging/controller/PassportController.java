@@ -28,15 +28,6 @@ public class PassportController {
         ).collect(Collectors.toList());
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Passport> findById(@PathVariable int id) {
-//        var person = this.passportService.findById(id);
-//        return new ResponseEntity<>(
-//                person.orElse(Passport.of(null)),
-//                person.isPresent() ? HttpStatus.OK : HttpStatus.NOT_FOUND
-//        );
-//    }
-
     @GetMapping("/{seria}")
     public ResponseEntity<List<Passport>> findBySeria(@PathVariable String seria) {
         List<Passport> passports = new ArrayList<>();
