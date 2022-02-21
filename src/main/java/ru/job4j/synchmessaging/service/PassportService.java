@@ -13,9 +13,11 @@ import java.util.*;
 @Slf4j
 @Service
 public class PassportService {
+
     static final Logger LOGGER = LoggerFactory.getLogger(PassportService.class);
 
     private PassportRepository repository;
+
     private HbmRepositoryImpl hbmRepository;
 
     public PassportService(PassportRepository repository, HbmRepositoryImpl hbmRepository) {
@@ -35,8 +37,14 @@ public class PassportService {
         return repository.findById(id);
     }
 
-    public Optional<Passport> findBySeria(String seria) {
-        return repository.findPassportBySeria(seria);
+    /**
+     * Find Passport using as key String value seria passport
+     *
+     * @param seria Passport object
+     * @return Optional<Passport>
+     */
+    public Optional<List<Passport>> findBySeria(String seria) {
+        return hbmRepository.findPassportBySeria(seria);
     }
 
     public void delete(Passport passport) {

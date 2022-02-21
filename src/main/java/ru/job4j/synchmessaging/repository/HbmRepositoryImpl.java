@@ -30,6 +30,14 @@ public class HbmRepositoryImpl {
         return passports;
     }
 
+    public Optional<List<Passport>> findPassportBySeria(String seria) {
+        Optional<List<Passport>> rsl = Optional.of(entityManager
+                .createQuery("select c from Passport as c where c.seria = :finish ", Passport.class)
+                .setParameter("finish", seria)
+                .getResultList());
+         return rsl;
+    }
+
     /**
      * find-replaceable, загрузить паспорта, которые нужно заменить в ближайшие 3 месяца
      *

@@ -5,20 +5,62 @@
 Приложение представляет из себя простой проест синхронного обмена сообщениями,
 при использовании микросервисной архитектуры отображая организацию взаимодействия между сервисами.
 
-- Реализован подход синхронного обмена сообщениями
-  клиент делает запрос и ждет "здесь и сейчас" ответ.
+Used stack technologies:
+
+- Java (Back-end)
+
+- Libraries (java):
+
+- Hibernate HQL/ JPA (data-base)
+
+- PostgreSQL PSQL (data-base)
+
+- Spring Boot и архитектура REST API
+
+- Maven
+  
+- Postman (Postman is an API platform for building and using APIs)
+
+ Реализован подход синхронного обмена сообщениями клиент делает запрос и ждет "здесь и сейчас" ответ.
   
   Сервис заниматься управлением паспортами.
   Доменной моделью будет - паспорт.
 
 Поддерживаються следующие методы:
 
-- /save, сохранить данные паспорта
-- /update?id=*, обновить данные паспорта
-- /delete?id=*, удалить данные паспорта
 - /find, загрузить все паспорта
+
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_1.jpg)
+
+
 - /find?seria=*, загрузить паспорта с заданной серией
+
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_2.jpg)
+
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_6.jpg)
+
+- /save, сохранить данные паспорта
+
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_3.jpg)
+
+- /update?id=*, обновить данные паспорта
+
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_5.jpg)
+
+- /delete?id=*, удалить данные паспорта
+
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_7.jpg)
+
+
 - /unavaliabe, загрузить паспорта чей срок вышел
+
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_8.jpg)
+
+
 - /find-replaceable, загрузить паспорта, которые нужно заменить в ближайшие 3 месяца
 
-Часть 2-я Consumer - смотреть проект: consumer_messaging
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_9.jpg)
+
+
+Часть 2-я Consumer - смотреть проект: https://github.com/consumer_messaging (Spring RestTemplate)
+

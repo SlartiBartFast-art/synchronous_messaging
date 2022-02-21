@@ -8,6 +8,8 @@ import java.util.Date;
 
 /**
  * Доменная модель - паспорт
+ * Date created -дата выдачи
+ * Date replace -дата окончания дествия документа
  */
 @Data
 @EqualsAndHashCode
@@ -23,6 +25,8 @@ public class Passport {
     private String seria;
     @Column(name = "number")
     private int number;
+    @Column(name = "code_department")
+    private String codeDepartment;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created")
     private Date created;
@@ -30,4 +34,13 @@ public class Passport {
     private Date replace;
     @Column(name = "department")
     private String department;
+
+    public Passport() {
+    }
+
+    public static Passport of(String seria) {
+        Passport passport = new Passport();
+        passport.seria = seria;
+        return passport;
+    }
 }
