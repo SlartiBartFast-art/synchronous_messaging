@@ -23,13 +23,6 @@ public class Test1 {
     }
 
     public static void main(String[] args) {
-        /* var dateToday = LocalDateTime.now();
-        System.out.println(dateToday);
-        Calendar calendar = Calendar.getInstance();
-        System.out.println(calendar);
-
-        var t = calendar.toString().split("T");
-        System.out.println(t[0]);*/
 
        Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
         System.out.println(timestamp);

@@ -30,36 +30,36 @@ Used stack technologies:
 
 - /find, загрузить все паспорта
 
-![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_1.jpg)
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_1.jpg)
 
 
 - /find?seria=*, загрузить паспорта с заданной серией
 
-![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_2.jpg)
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_2.jpg)
 
-![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_6.jpg)
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_6.jpg)
 
 - /save, сохранить данные паспорта
 
-![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_3.jpg)
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_3.jpg)
 
 - /update?id=*, обновить данные паспорта
 
-![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_5.jpg)
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_5.jpg)
 
 - /delete?id=*, удалить данные паспорта
 
-![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_7.jpg)
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_7.jpg)
 
 
 - /unavaliabe, загрузить паспорта чей срок вышел
 
-![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_8.jpg)
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_8.jpg)
 
 
 - /find-replaceable, загрузить паспорта, которые нужно заменить в ближайшие 3 месяца
 
-![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/main/image/Screenshot_9.jpg)
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_9.jpg)
 
 
 Часть 2-я Consumer - смотреть проект: https://github.com/consumer_messaging (Spring RestTemplate)
