@@ -62,5 +62,5 @@ Used stack technologies:
 ![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_9.jpg)
 
 
-Часть 2-я Consumer - смотреть проект: https://github.com/consumer_messaging (Spring RestTemplate)
+Часть 2-я Consumer - смотреть проект: https://github.com/SlartiBartFast-art/consumer_messaging (Spring RestTemplate)
 
