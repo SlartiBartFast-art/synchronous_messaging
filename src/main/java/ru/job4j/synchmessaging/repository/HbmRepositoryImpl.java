@@ -43,11 +43,12 @@ public class HbmRepositoryImpl {
      *
      * @return
      */
-    public List<Passport> replaceable() {
+    public List<Passport> showWhereTimeExpiresIn() {
         List<Passport> passports = new ArrayList<>();
         passports = entityManager
-                .createQuery("select c from Passport as c where c.replace < :finish ", Passport.class)
+                .createQuery("select c from Passport as c where c.replace < :finish and c.replace > :today", Passport.class)
                 .setParameter("finish", subtractDays(90, true))
+                .setParameter("today", subtractDays(0, true))
                 .getResultList();
         return passports;
     }

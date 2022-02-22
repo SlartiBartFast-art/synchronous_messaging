@@ -18,13 +18,12 @@ public class PassportService {
 
     private PassportRepository repository;
 
-    private HbmRepositoryImpl hbmRepository;
-
-    public PassportService(PassportRepository repository, HbmRepositoryImpl hbmRepository) {
+    public PassportService(PassportRepository repository) {
         this.repository = repository;
-        this.hbmRepository = hbmRepository;
     }
 
+    //TODO валидаципри сохранении паспорта.
+// Если сохраняется паспорт с той же серией и номером, то нужно возвращать 400 (BatRequest) ошибку.
     public Passport save(Passport passport) {
         return repository.save(passport);
     }
@@ -44,7 +43,7 @@ public class PassportService {
      * @return Optional<Passport>
      */
     public Optional<List<Passport>> findBySeria(String seria) {
-        return hbmRepository.findPassportBySeria(seria);
+        return repository.findPassportBySeria(seria);
     }
 
     public void delete(Passport passport) {
@@ -53,11 +52,13 @@ public class PassportService {
 
     /**
      * unavaliabe, загрузить паспорта чей срок вышел
+     * показать просроченные
      *
      * @return
      */
-    public List<Passport> unavaliabe() {
-        var rsl = hbmRepository.findUn();
+    public List<Passport> showOverdue() {
+        Date date = subtractDays(1, false);
+        var rsl = repository.findPassportByReplace(date);
         LOGGER.info("То что нашли {}", rsl);
         return rsl;
     }
@@ -68,13 +69,31 @@ public class PassportService {
      * @return List values Passport object
      */
     public List<Passport> findByDateMoreThenDay() {
-        var rsl = hbmRepository.replaceable();
+        var finish = subtractDays(90, true);
+        var today = subtractDays(0, true);
+        var rsl = repository.findPassportByReplaceBetween(finish, today);
         LOGGER.info("То что нашли {}", rsl);
         return rsl;
     }
 
-//    private void convert(Timestamp timestamp) {
-//        var st = timestamp.toString().split(" ");
-//        System.out.println(st[0]);
-//    }
+    /**
+     * метод определение даты минус 1 день
+     * или 90 дней, в зависимости от условия поиска
+     * параметр метода - колличество дней минус от текущей даты
+     * boolean flag - false minus true plus
+     *
+     * @return Date time one day before
+     */
+    private Date subtractDays(int day, boolean flag) {
+        Date date = new Date(System.currentTimeMillis());
+        int days = day;
+        GregorianCalendar cal = new GregorianCalendar();
+        cal.setTime(date);
+        if (!flag) {
+            cal.add(Calendar.DATE, -days);
+            return cal.getTime();
+        }
+        cal.add(Calendar.DATE, days);
+        return cal.getTime();
+    }
 }

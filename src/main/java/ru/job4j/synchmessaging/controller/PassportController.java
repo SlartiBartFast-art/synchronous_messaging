@@ -21,6 +21,10 @@ public class PassportController {
         this.passportService = passportService;
     }
 
+    /**
+     * Find all  objects Passport from DB
+     * @return List<Passport>
+     */
     @GetMapping("/find")
     public List<Passport> findAll() {
         return StreamSupport.stream(
@@ -52,6 +56,11 @@ public class PassportController {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * Delete by used Id int
+     * @param id int PKey from DB
+     * @return HTTStatus.ok
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         Passport passport = new Passport();
@@ -66,7 +75,7 @@ public class PassportController {
      */
     @GetMapping("/unavaliabe")
     public ResponseEntity<List<Passport>> findByDateExpiration() {
-        var person = this.passportService.unavaliabe();
+        var person = this.passportService.showOverdue();
         return new ResponseEntity<>(person,
                 !person.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND
         );
