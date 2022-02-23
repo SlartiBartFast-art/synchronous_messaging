@@ -43,6 +43,12 @@ Used stack technologies:
 
 ![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_3.jpg)
 
+- при попытке сохранить уже существующий в БД объект Паспорт(проверка проводиться по серии и номеру паспорта)
+  
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_11.jpg)
+
+![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_10.jpg)
+
 - /update?id=*, обновить данные паспорта
 
 ![Image of Arch](https://github.com/SlartiBartFast-art/job4j_synchronous_messaging/blob/master/image/Screenshot_5.jpg)

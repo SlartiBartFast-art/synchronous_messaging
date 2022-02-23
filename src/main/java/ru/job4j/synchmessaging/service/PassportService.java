@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ru.job4j.synchmessaging.model.Passport;
-import ru.job4j.synchmessaging.repository.HbmRepositoryImpl;
+
 import ru.job4j.synchmessaging.repository.PassportRepository;
 
 import java.util.*;
@@ -22,10 +22,35 @@ public class PassportService {
         this.repository = repository;
     }
 
-    //TODO валидаципри сохранении паспорта.
-// Если сохраняется паспорт с той же серией и номером, то нужно возвращать 400 (BatRequest) ошибку.
+    /**
+     * Если сохраняется паспорт с той же серией и номером,
+     * то возвращаем 400 (BatRequest) ошибку.
+     *
+     * @param passport
+     * @return
+     */
     public Passport save(Passport passport) {
+        if (findIdenticalBySeriaAndNumber(passport.getSeria(), passport.getNumber())) {
+            return passport;
+        }
         return repository.save(passport);
+    }
+
+    /**
+     * find using  seria and number from Passport obj in to BD
+     *
+     * @param serial
+     * @param number
+     * @return true if exist or false if not exist
+     */
+    private boolean findIdenticalBySeriaAndNumber(String serial, int number) {
+        boolean rsl = false;
+        var psprt = repository.findPassportBySeriaAndNumber(serial, number);
+        if (psprt.isPresent()) {
+            rsl = true;
+            return rsl;
+        }
+        return rsl;
     }
 
     public Iterable<Passport> findAll() {

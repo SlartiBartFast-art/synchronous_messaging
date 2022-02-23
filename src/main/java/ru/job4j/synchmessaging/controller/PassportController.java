@@ -42,8 +42,21 @@ public class PassportController {
         );
     }
 
+    /**
+     * Save Passport object in to DBase
+     * if Passport obj is exist in to BD return Passport obj from DM anl  HttpStatus.CREATED
+     * @param passport object
+     * @return Passport object and HTTPStatus operftion created/bad_REQUEST
+     */
     @PostMapping("/")
     public ResponseEntity<Passport> create(@RequestBody Passport passport) {
+    Passport rsl = this.passportService.save(passport);
+    if (rsl.getId() == 0) {
+        return new ResponseEntity<>(
+                passport,
+                HttpStatus.BAD_REQUEST
+        );
+    }
         return new ResponseEntity<>(
                 this.passportService.save(passport),
                 HttpStatus.CREATED

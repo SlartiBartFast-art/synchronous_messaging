@@ -14,6 +14,7 @@ import java.util.Optional;
  * загрузить паспорта, которые нужно заменить в ближайшие 3 месяца
  * загрузить паспорта чей срок вышел
  * найти паспорт по серии
+ * найти паспорт по серии и номеру
  */
 public interface PassportRepository extends CrudRepository<Passport, Integer> {
 
@@ -25,4 +26,7 @@ public interface PassportRepository extends CrudRepository<Passport, Integer> {
 
     @Query("select c from Passport as c where c.seria = ?1")
     public Optional<List<Passport>> findPassportBySeria(String seria);
+
+    @Query("select c from Passport as c where c.seria = ?1 and c.number = ?2")
+    public Optional<Passport> findPassportBySeriaAndNumber(String seria, int number);
 }
