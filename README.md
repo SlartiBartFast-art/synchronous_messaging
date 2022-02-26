@@ -1,5 +1,9 @@
 # simple project synchronous messaging
 
+![GitHub top language](https://img.shields.io/github/languages/top/SlartiBartFast-art/job4j_synchronous_messaging?logo=java&logoColor=red)
+![GitHub last commit](https://img.shields.io/github/last-commit/SlartiBartFast-art/job4j_synchronous_messaging?logo=github)
+
+
 Часть 1-я Provider
 
 Приложение представляет из себя простой проест синхронного обмена сообщениями,
