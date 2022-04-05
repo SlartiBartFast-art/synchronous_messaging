@@ -1,4 +1,4 @@
-# simple project synchronous messaging
+# project synchronous messaging
 
 [![Build Status](https://app.travis-ci.com/SlartiBartFast-art/job4j_synchronous_messaging.svg?branch=master)](https://app.travis-ci.com/SlartiBartFast-art/job4j_synchronous_messaging)
 ![GitHub top language](https://img.shields.io/github/languages/top/SlartiBartFast-art/job4j_synchronous_messaging?logo=java&logoColor=red)
